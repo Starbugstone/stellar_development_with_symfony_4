@@ -1,16 +1,24 @@
+
 {% extends 'base.html.twig' %}
 {% block title %}
     Read: {{ title }}
 {% endblock %}
 {% block body %}
-    <pre>
-    {{  dump(app) }}
-    </pre>
-    <h1>{{ title }}</h1>
+    <div class="container">
+        <h1>{{ title }}</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos est fuga placeat praesentium! Ab adipisci blanditiis commodi cum dicta explicabo iste itaque, maiores, officia qui rem sequi sint totam vel?</p>
+        <h2>Comments</h2>
+        {% for comment in comments %}
+            <li>{{ comment }}</li>
+        {% endfor %}
+        <p><span class="pl-2 article-details"><span class="js-like-article-count"> 5 </span><a href="{{ path('article.toggle_heart', {slug: slug}) }}" class="fa fa-heart-o like-article js-like-article"></a> </span></p>
+    </div>
 
-    <h2>Comments</h2>
-    {% for comment in comments %}
-        <li>{{ comment }}</li>
-    {% endfor %}
 
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/article_show.js') }}"></script>
 {% endblock %}
